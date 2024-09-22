@@ -25,11 +25,11 @@ const Carosel = () => {
   const subjectHandleSwipe = (direction: string) => {
     if (direction === "Up") {
       const nextSubjectIndex = (activeSubjectIndex + 1) % subjects.length;
-      setActiveChapter(subjects[nextSubjectIndex]);
+      setActiveSubject(subjects[nextSubjectIndex]);
     } else if (direction === "Down") {
       const prevSubjectIndex =
         (activeSubjectIndex - 1 + subjects.length) % subjects.length;
-      setActiveChapter(subjects[prevSubjectIndex]);
+      setActiveSubject(subjects[prevSubjectIndex]);
     }
   };
 
@@ -37,6 +37,8 @@ const Carosel = () => {
     onSwipedUp: () => subjectHandleSwipe("Up"),
     onSwipedDown: () => subjectHandleSwipe("Down"),
     trackMouse: true,
+    trackTouch: true,
+    touchEventOptions: { passive: true },
   });
 
   const chapterHandleSwipe = (direction: string) => {
@@ -54,6 +56,7 @@ const Carosel = () => {
     onSwipedUp: () => chapterHandleSwipe("Up"),
     onSwipedDown: () => chapterHandleSwipe("Down"),
     trackMouse: true,
+    trackTouch: true,
   });
 
   return (
